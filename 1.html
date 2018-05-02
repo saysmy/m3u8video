@@ -40,32 +40,15 @@
 		document.getElementById('car_audio').src = typeof(location.href.split('m3u8=')[1]) == 'undefined' ? 'https://v.10744445.com/v/b21968052899defe968c764ca11ad757/index.m3u8' : location.href.split('m3u8=')[1];
 		document.getElementById('video').src = typeof(location.href.split('m3u8=')[1]) == 'undefined' ? 'https://v.10744445.com/v/b21968052899defe968c764ca11ad757/index.m3u8' : location.href.split('m3u8=')[1];
 
-		document.getElementById('video').play(); 
+		 document.getElementById('video').play(); 
 
-		document.addEventListener("WeixinJSBridgeReady", function () { 
-			document.getElementById('car_audio').play(); 
-			document.getElementById('video').play(); 
-			document.getElementById('source').play(); 
-		}, false);
-
-	    wx.ready(function(){
-	    	
-	           document.getElementById('video').play();
-
-	           var myVid=document.getElementById("video");
-	           var _now_time = Date.now();
-	 
-	           var play_interval = setInterval(function(){
-	               var _new_time = Date.now();
-	               if(_new_time - _now_time < 8000 && myVid.played.length == 1){
-	                   document.getElementById('video').play();
-	                   clearInterval(play_interval);
-	               }
-	               if(_new_time - _now_time >= 8000){
-	                   clearInterval(play_interval);
-	               }
-	           },200);
-	       })
+		 document.addEventListener("WeixinJSBridgeReady", function () { 
+		    setTimeout(function(){
+		    	document.getElementById('video').play();
+		    	document.getElementById('car_audio').play();  
+		  	}, 200)
+		    
+		 }, false);
 	}
 </script> 
 
